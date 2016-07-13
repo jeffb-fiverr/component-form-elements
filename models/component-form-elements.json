@@ -1,0 +1,25 @@
+{
+    "name" : "component-form-elements",
+    "components" : [
+        {
+            "name" : "dropdown",
+            "url" : "/dropdown"
+        },
+        {
+            "name" : "range-slider",
+            "url" : "/range-slider"
+        },
+        {
+            "name" : "star-rating",
+            "url" : "/star-rating"
+        },
+        {
+            "name" : "tag-boolean",
+            "url" : "/tag-boolean"
+        },
+        {
+            "name" : "textfield",
+            "url" : "/textfield"
+        }
+    ]
+}
