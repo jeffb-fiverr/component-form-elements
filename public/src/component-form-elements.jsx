@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AbstractForm from '../../dist/js/AbstractForm'
 import Dropdown from '../../dist/js/Dropdown';
 import RangeSlider from '../../dist/js/RangeSlider';
 import StarRating from '../../dist/js/StarRating';
@@ -22,6 +23,7 @@ const dropdownEl = getDomNode('.component-dropdown-container'),
 let ToRender,
     model,
     container,
+    formModel = require('../../models/abstract-form'),
     renderReact = true;
 
 if (dropdownEl) {
@@ -51,7 +53,9 @@ if (dropdownEl) {
 
 if (renderReact) {
     ReactDOM.render(
-      <ToRender model={model} />,
+      <AbstractForm model={formModel}>
+          <ToRender model={model} />
+      </AbstractForm>,
       container
     );
 }

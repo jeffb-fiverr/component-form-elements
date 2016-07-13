@@ -1,3 +1,140 @@
+// styles we're getting from V2
+@mixin stars-by-rating-svg($w,$gap) {
+    background-image:
+        url('/public/src/img/icn-master-ratings-stars.svg'),
+        url('/public/src/img/icn-master-ratings-stars.svg'),
+        url('/public/src/img/icn-master-ratings-stars.svg'),
+        url('/public/src/img/icn-master-ratings-stars.svg'),
+        url('/public/src/img/icn-master-ratings-stars.svg');
+    background-repeat: no-repeat;
+    background-size: $w+px ($w * 3)+px;
+    display: inline-block;
+    overflow: hidden;
+    width: (($w * 5) + ($gap * 4))+px;
+    height: $w+px;
+    text-indent: -3000px;
+
+    &.rate-10 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            top left (($w*2)+($gap*2))+px,
+            top left (($w*3)+($gap*3))+px,
+            top left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-9 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            top left (($w*2)+($gap*2))+px,
+            top left (($w*3)+($gap*3))+px,
+            bottom left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-8 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            top left (($w*2)+($gap*2))+px,
+            top left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-7 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            top left (($w*2)+($gap*2))+px,
+            bottom left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-6 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            top left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-5 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            bottom left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-4 {
+        background-position:
+            top left,
+            top left ($w+$gap)+px,
+            center left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-3 {
+        background-position:
+            top left,
+            bottom left ($w+$gap)+px,
+            center left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-2 {
+        background-position:
+            top left,
+            center left ($w+$gap)+px,
+            center left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-1 {
+        background-position:
+            bottom left,
+            center left ($w+$gap)+px,
+            center left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+
+    &.rate-0 {
+        background-position:
+            center left,
+            center left ($w+$gap)+px,
+            center left (($w*2)+($gap*2))+px,
+            center left (($w*3)+($gap*3))+px,
+            center left (($w*4)+($gap*4))+px;
+    }
+}
+
+.star-rating-s9 {
+    @include stars-by-rating-svg(9,3);
+}
+
+.star-rating-s10 {
+    @include stars-by-rating-svg(10,4);
+}
+
+.star-rating-s12 {
+    @include stars-by-rating-svg(12,4);
+}
+
+.star-rating-s15 {
+    @include stars-by-rating-svg(15,4);
+}
+
+.star-rating-s20 {
+    @include stars-by-rating-svg(20,5);
+}
+
+// includes
 @import "base";
 
 @import "font-awesome-compass";
@@ -10,6 +147,7 @@
 
 @import "reset";
 
+// resets for this component
 body {
     .fpo {
         margin: 20px;
