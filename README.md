@@ -7,11 +7,9 @@
 
 * Gulp automation
 * Express server
-* Handlebars templating
+* React UI
 * SASS styling (SCSS)
 * CommonJS with Webpack
-* Unit testing with Mocha and Chai
-* Test coverage with Istanbul
 
 ### Prerequisites
 
