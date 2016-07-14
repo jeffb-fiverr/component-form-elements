@@ -3,9 +3,13 @@ import React from 'react';
 class Dropdown extends React.Component {
 
     componentWillMount() {
+
+        const model = this.props.model,
+              userChoice = model.userChoice;
+
         this.setState({
-          "activeOption" : this.props.model.defaultText,
-          "activeValue" : null,
+          "activeOption" : (userChoice) ? userChoice.label : this.props.model.defaultText,
+          "activeValue" : (userChoice) ? userChoice.value : "",
           "dropdownOpen" : false
         });
 

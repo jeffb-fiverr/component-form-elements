@@ -1,6 +1,10 @@
 module.exports = {
     "defaultText" : "Tell us why privately",
     "hiddenInputName" : "thisIsAHiddenInputNameThatWillChange",
+    "userChoice" : {
+        "label" : "Description",
+        "value" : "description"
+    },
     "options" : [
         {
             "label" : "Gallery",

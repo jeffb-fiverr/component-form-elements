@@ -28,26 +28,36 @@ var AbstractForm = function (_React$Component) {
     }
 
     _createClass(AbstractForm, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.childrenWithProps = this.getChildrenWithProps();
+        }
+    }, {
         key: 'displayFollowUp',
         value: function displayFollowUp(question) {
             console.info('question/followup information', question);
         }
     }, {
-        key: 'render',
-        value: function render() {
+        key: 'getChildrenWithProps',
+        value: function getChildrenWithProps() {
             var _this2 = this;
 
-            var viewModel = this.props.model,
-                childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {
+            return _react2.default.Children.map(this.props.children, function (child) {
                 return _react2.default.cloneElement(child, {
                     displayFollowUp: _this2.displayFollowUp
                 });
             });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            var viewModel = this.props.model;
 
             return _react2.default.createElement(
                 'form',
                 { method: viewModel.formMethod, action: viewModel.formAction },
-                childrenWithProps
+                this.childrenWithProps
             );
         }
     }]);

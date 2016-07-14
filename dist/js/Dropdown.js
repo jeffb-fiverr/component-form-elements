@@ -30,9 +30,13 @@ var Dropdown = function (_React$Component) {
     _createClass(Dropdown, [{
         key: "componentWillMount",
         value: function componentWillMount() {
+
+            var model = this.props.model,
+                userChoice = model.userChoice;
+
             this.setState({
-                "activeOption": this.props.model.defaultText,
-                "activeValue": null,
+                "activeOption": userChoice ? userChoice.label : this.props.model.defaultText,
+                "activeValue": userChoice ? userChoice.value : "",
                 "dropdownOpen": false
             });
 
