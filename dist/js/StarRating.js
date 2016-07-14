@@ -49,6 +49,7 @@ var StarRating = function (_React$Component) {
                 return _react2.default.createElement(
                     'span',
                     {
+                        key: num,
                         className: 'fake-star-' + model.starSize + ' fake-star-' + num,
                         'data-star-id': num,
                         onMouseEnter: _this2.mouseEnterFakeStars.bind(_this2),

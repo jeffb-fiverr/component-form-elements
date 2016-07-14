@@ -18,6 +18,7 @@ class StarRating extends React.Component {
         return stars.map((num) => {
             return (
                 <span
+                    key={num}
                     className={'fake-star-' + model.starSize + ' fake-star-' + num}
                     data-star-id={num}
                     onMouseEnter={this.mouseEnterFakeStars.bind(this)}
