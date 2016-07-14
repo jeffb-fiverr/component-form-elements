@@ -42,6 +42,10 @@
 // star rating styles
 .component-star-rating-container {
 
+    .star-rating-container {
+        position: relative;
+    }
+
     .fake-stars-container {
 
         float: left;
@@ -64,3 +68,29 @@
     }
 }
 
+// dropdown styles
+.component-dropdown-container {
+    .fake-dropdown {
+        visibility: visible;
+
+        .dropdown-toggle {
+            min-width: 110px;
+        }
+
+        .dropdown-menu {
+            min-width: 300px;
+            border: 0;
+            padding: 0;
+
+            li a {
+                padding: 15px 10px;
+
+                &:hover {
+                    color: #777777;
+                    background: #f9f9f9;
+                }
+            }
+        }
+    }
+
+}

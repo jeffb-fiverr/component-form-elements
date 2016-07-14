@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28,17 +28,83 @@ var Dropdown = function (_React$Component) {
     }
 
     _createClass(Dropdown, [{
-        key: 'componentWillMount',
+        key: "componentWillMount",
         value: function componentWillMount() {
-            this.setState({ name: this.props.model.name });
+            this.setState({
+                "activeOption": this.props.model.defaultText,
+                "activeValue": null,
+                "dropdownOpen": false
+            });
+
+            this.dropdownChoices = this.getDropdownChoices(this.props.model);
         }
     }, {
-        key: 'render',
+        key: "toggleDropdown",
+        value: function toggleDropdown(e) {
+            e.preventDefault();
+
+            this.setState({ "dropdownOpen": !this.state.dropdownOpen });
+        }
+    }, {
+        key: "chooseDropdownChoice",
+        value: function chooseDropdownChoice(e) {
+            e.preventDefault();
+
+            var chosenOptionData = e.target.dataset,
+                optionLabel = chosenOptionData.label,
+                optionValue = chosenOptionData.value;
+
+            this.setState({
+                "activeOption": optionLabel,
+                "activeValue": optionValue,
+                "dropdownOpen": false
+            });
+        }
+    }, {
+        key: "getDropdownChoices",
+        value: function getDropdownChoices(model) {
+            var _this2 = this;
+
+            return model.options.map(function (option, key) {
+                return _react2.default.createElement(
+                    "li",
+                    { key: key },
+                    _react2.default.createElement(
+                        "a",
+                        {
+                            href: "#!",
+                            className: "js-gtm-event-auto",
+                            "data-gtm-category": "gig-page-triple",
+                            "data-gtm-action": "click",
+                            "data-gtm-label": "reviews-most-recent",
+                            "data-reviews-type": "all",
+                            rel: "noindex, nofollow",
+                            "data-value": option.value,
+                            "data-label": option.label,
+                            onClick: _this2.chooseDropdownChoice.bind(_this2) },
+                        option.label
+                    )
+                );
+            });
+        }
+    }, {
+        key: "render",
         value: function render() {
+
             return _react2.default.createElement(
-                'div',
-                null,
-                this.state.name
+                "div",
+                { className: 'fake-dropdown js-gig-review-dropdown ' + (this.state.dropdownOpen ? 'open' : '') },
+                _react2.default.createElement(
+                    "a",
+                    { href: "#!", className: "dropdown-toggle", "data-toggle": "dropdown", rel: "noindex, nofollow", onClick: this.toggleDropdown.bind(this) },
+                    this.state.activeOption
+                ),
+                _react2.default.createElement("input", { type: "hidden", name: this.props.model.hiddenInputName, value: this.state.activeValue }),
+                _react2.default.createElement(
+                    "ul",
+                    { className: "dropdown-menu", role: "menu" },
+                    this.dropdownChoices
+                )
             );
         }
     }]);

@@ -28,9 +28,9 @@ var AbstractForm = function (_React$Component) {
     }
 
     _createClass(AbstractForm, [{
-        key: 'doSomething',
-        value: function doSomething() {
-            console.info('oh my damn, its working!');
+        key: 'displayFollowUp',
+        value: function displayFollowUp(question) {
+            console.info('question/followup information', question);
         }
     }, {
         key: 'render',
@@ -40,7 +40,7 @@ var AbstractForm = function (_React$Component) {
             var viewModel = this.props.model,
                 childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {
                 return _react2.default.cloneElement(child, {
-                    doSomething: _this2.doSomething
+                    displayFollowUp: _this2.displayFollowUp
                 });
             });
 

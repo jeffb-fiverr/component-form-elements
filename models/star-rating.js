@@ -1,6 +1,5 @@
 module.exports = {
     "starSize" : 20,
-    "numberOfStars" : 5,
     "hiddenFieldName" : "someNameThatIsToBeChangedLater",
     "userSubmittedRating" : 4,
     "ratingHints" : {

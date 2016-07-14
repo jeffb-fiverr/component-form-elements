@@ -73,12 +73,18 @@ var StarRating = function (_React$Component) {
     }, {
         key: 'fakeStarClicked',
         value: function fakeStarClicked(e) {
+            var question = this.props.model.question;
+
             // set permanent rating
             this.setState({ permRating: e.target.dataset.starId * 2 });
 
             // check for followup
-            // this.props.checkForFollowUp(this.props.model);
-            this.props.doSomething();
+            if (typeof question.followup === 'undefined') {
+                return;
+            }
+
+            // display follow up question
+            this.props.displayFollowUp(question);
         }
     }, {
         key: 'render',

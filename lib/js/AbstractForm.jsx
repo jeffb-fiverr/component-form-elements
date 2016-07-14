@@ -2,8 +2,8 @@ import React from 'react';
 
 class AbstractForm extends React.Component {
 
-    doSomething() {
-        console.info('oh my damn, its working!');
+    displayFollowUp(question) {
+        console.info('question/followup information', question);
     }
 
     render() {
@@ -11,7 +11,7 @@ class AbstractForm extends React.Component {
         const viewModel = this.props.model,
               childrenWithProps = React.Children.map(this.props.children, (child) => {
                   return React.cloneElement(child, {
-                      doSomething: this.doSomething
+                      displayFollowUp: this.displayFollowUp
                   })
               });
 
