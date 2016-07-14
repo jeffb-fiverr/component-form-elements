@@ -3,7 +3,31 @@ import React from 'react';
 class StarRating extends React.Component {
 
     componentWillMount() {
-        this.setState({ tempRating: 0, permRating: 0 });
+        const model = this.props.model,
+              userSubmittedRating = model.userSubmittedRating || 0;
+
+        this.setState({
+          tempRating: userSubmittedRating,
+          permRating: userSubmittedRating
+        });
+    }
+
+    getFakeStars(model) {
+        const stars = [1,2,3,4,5];
+
+        return stars.map((num) => {
+            return (
+                <span
+                    className={'fake-star-' + model.starSize + ' fake-star-' + num}
+                    data-star-id={num}
+                    onMouseEnter={this.mouseEnterFakeStars.bind(this)}
+                    onClick={this.fakeStarClicked.bind(this)}>
+                        <span
+                            className="fake-hint-wrap hint--top hint--always"
+                            data-hint={model.ratingHints[this.state.tempRating]}/>
+                </span>
+            );
+        });
     }
 
     mouseEnterFakeStars(e) {
@@ -24,39 +48,18 @@ class StarRating extends React.Component {
     }
 
     render() {
-        const viewModel = this.props.model;
+        const viewModel = this.props.model,
+              fakeStars = this.getFakeStars(viewModel);
 
         return (
             <div className="star-rating-container" onMouseLeave={this.mouseLeaveFakeStars.bind(this)}>
                 <input type="hidden" name={viewModel.hiddenFieldName} value={this.state.permRating}  />
-                <span className={'star-rating-s' + viewModel.starSize + ' rate-' + this.state.tempRating}>{this.state.tempRating}</span>
+                <span className={'star-rating-s' + viewModel.starSize + ' rate-' + this.state.tempRating}>
+                    {this.state.tempRating}
+                </span>
 
                 <div className="fake-stars-container">
-                    <span
-                        className={'fake-star-' + viewModel.starSize + ' fake-star-1'}
-                        data-star-id="1"
-                        onMouseEnter={this.mouseEnterFakeStars.bind(this)}
-                        onClick={this.fakeStarClicked.bind(this)} />
-                    <span
-                        className={'fake-star-' + viewModel.starSize + ' fake-star-2'}
-                        data-star-id="2"
-                        onMouseEnter={this.mouseEnterFakeStars.bind(this)}
-                        onClick={this.fakeStarClicked.bind(this)} />
-                    <span
-                        className={'fake-star-' + viewModel.starSize + ' fake-star-3'}
-                        data-star-id="3"
-                        onMouseEnter={this.mouseEnterFakeStars.bind(this)}
-                        onClick={this.fakeStarClicked.bind(this)} />
-                    <span
-                        className={'fake-star-' + viewModel.starSize + ' fake-star-4'}
-                        data-star-id="4"
-                        onMouseEnter={this.mouseEnterFakeStars.bind(this)}
-                        onClick={this.fakeStarClicked.bind(this)} />
-                    <span
-                        className={'fake-star-' + viewModel.starSize + ' fake-star-5'}
-                        data-star-id="5"
-                        onMouseEnter={this.mouseEnterFakeStars.bind(this)}
-                        onClick={this.fakeStarClicked.bind(this)} />
+                    {fakeStars}
                 </div>
             </div>
         );

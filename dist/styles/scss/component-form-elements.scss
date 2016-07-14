@@ -24,6 +24,19 @@
     &.fake-star-5 {
         left: (($w * 4) + ($gap *4))+px
     }
+
+    &[class^="fake-star-"] {
+        &:hover {
+            .fake-hint-wrap {
+                display: inline-block;
+            }
+        }
+
+        .fake-hint-wrap {
+            display: none;
+            margin: 0 0 $w+px ($w / 2)+px;
+        }
+    }
 }
 
 // star rating styles
